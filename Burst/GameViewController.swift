@@ -12,9 +12,6 @@ class GameViewController: UIViewController {
                 view.presentScene(scene)
             }
             view.ignoresSiblingOrder = true
-            
-            //view.showsFPS = true
-            //view.showsNodeCount = true
         }
     }
 
@@ -32,10 +29,5 @@ class GameViewController: UIViewController {
 
     override var prefersStatusBarHidden: Bool {
         return true
-    }
-    
-    func createBubble(X: Float64, Y: Float64) {
-        let BUBBLE_RADIUS = 10
-        
     }
 }

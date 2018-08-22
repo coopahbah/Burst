@@ -1,49 +1,28 @@
 import SpriteKit
 import GameplayKit
+import Darwin
 
 class GameScene: SKScene {
-    
-    private var label : SKLabelNode?
-    private var spinnyNode : SKShapeNode?
-    private var bubble : SKShapeNode?
-    
     override func didMove(to view: SKView) {
-        self.bubble = SKShapeNode.init(circleOfRadius: 10)
-        if let bubble = self.bubble {
-            bubble.position = CGPoint(x: size.width * 0.5, y: size.height * 0.5)
-            addChild(bubble)
-        }
+        createBubble()
     }
     
-    
-    func touchDown(atPoint pos : CGPoint) {
-        
+    func createBubble() {
+        let screenSize = UIScreen.main.bounds
+        let screenWidth = screenSize.width
+        let screenHeight = screenSize.height
+        let maxX = Double(screenWidth - 10.0)
+        let minX = -1 * maxX
+        let maxY = Double(screenHeight - 10.0)
+        let minY = -1 * maxY
+        let xPosition = Double.random(in: minX...maxX)
+        let yPosition = Double.random(in: minY...maxY)
+        let bubble = SKShapeNode.init(circleOfRadius: 10.0)
+        bubble.fillColor = UIColor.black
+        bubble.alpha = 1.0
+        bubble.position = CGPoint(x: xPosition, y: yPosition)
+        addChild(bubble)
     }
-    
-    func touchMoved(toPoint pos : CGPoint) {
-        
-    }
-    
-    func touchUp(atPoint pos : CGPoint) {
-        
-    }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
-    }
-    
-    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
-    }
-    
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
-    }
-    
-    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
-    }
-    
     
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
