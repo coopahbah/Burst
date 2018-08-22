@@ -23,14 +23,17 @@ class GameScene: SKScene {
         let xPosition = Double.random(in: minX...maxX)
         let yPosition = Double.random(in: minY...maxY)
         let bubble = SKShapeNode.init(circleOfRadius: 10.0)
-        bubble.fillColor = UIColor.black
+        bubble.fillColor = randomColor()
         bubble.alpha = 1.0
         bubble.position = CGPoint(x: xPosition, y: yPosition)
         addChild(bubble)
     }
     
-    func randomColor() {
-        
+    func randomColor() -> UIColor! {
+        let redContent = CGFloat.random(in: 0.0...1.0)
+        let greenContent = CGFloat.random(in: 0.0...1.0)
+        let blueContent = CGFloat.random(in: 0.0...1.0)
+        return UIColor(red: redContent, green: greenContent, blue: blueContent, alpha: 1.0)
     }
     
     override func update(_ currentTime: TimeInterval) {
