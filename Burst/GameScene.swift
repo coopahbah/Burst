@@ -22,7 +22,8 @@ class GameScene: SKScene {
     @objc func createBubble() {
         let xPosition = Double.random(in: minX...maxX)
         let yPosition = Double.random(in: minY...maxY)
-        let bubble = SKShapeNode.init(circleOfRadius: 10.0)
+        let bubble = Bubble.init(circleOfRadius: 10.0)
+        bubble.isUserInteractionEnabled = true
         bubble.fillColor = randomColor()
         bubble.alpha = 1.0
         bubble.position = CGPoint(x: xPosition, y: yPosition)
@@ -38,5 +39,11 @@ class GameScene: SKScene {
     
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
+    }
+}
+
+class Bubble : SKShapeNode {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.removeFromParent()
     }
 }
