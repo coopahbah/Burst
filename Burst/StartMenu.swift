@@ -4,8 +4,8 @@ import UIKit
 class StartMenu : UIViewController {
     @IBOutlet weak var HighScore: UILabel!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
         
         let ud = UserDefaults.standard
         var highScore = ud.string(forKey: "High Score")

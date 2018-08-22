@@ -14,6 +14,9 @@ class GameScene: SKScene {
     private var bubbleTimer: Timer! = Timer()
     private var endTimer: Timer! = Timer()
     
+    var gameVC: GameViewController?
+    
+    
     override func didMove(to view: SKView) {
         maxX = Double(screenSize.width - 10.0)
         minX = -1 * maxX
@@ -54,8 +57,7 @@ class GameScene: SKScene {
     @objc func checkForEnd() {
         for node in self.children {
             let bubble = node as! Bubble
-            print(bubble.radius)
-            if (bubble.xScale >= 75.0) {
+            if (bubble.xScale >= 50.0) {
                 endGame()
             }
         }
@@ -71,6 +73,7 @@ class GameScene: SKScene {
         for node in self.children {
             node.removeFromParent()
         }
+        gameVC?.dismiss(animated: true)
     }
 }
 
