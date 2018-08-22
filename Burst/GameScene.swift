@@ -3,12 +3,13 @@ import GameplayKit
 import Darwin
 
 class GameScene: SKScene {
+    private let screenSize = UIScreen.main.bounds
+    
     override func didMove(to view: SKView) {
         createBubble()
     }
     
     func createBubble() {
-        let screenSize = UIScreen.main.bounds
         let screenWidth = screenSize.width
         let screenHeight = screenSize.height
         let maxX = Double(screenWidth - 10.0)
@@ -22,6 +23,10 @@ class GameScene: SKScene {
         bubble.alpha = 1.0
         bubble.position = CGPoint(x: xPosition, y: yPosition)
         addChild(bubble)
+    }
+    
+    func randomColor() {
+        
     }
     
     override func update(_ currentTime: TimeInterval) {

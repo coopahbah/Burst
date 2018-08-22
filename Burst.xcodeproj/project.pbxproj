@@ -15,6 +15,7 @@
 		CD4A7B7C212DDEA800F9CE93 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD4A7B7A212DDEA800F9CE93 /* Main.storyboard */; };
 		CD4A7B7E212DDEA900F9CE93 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD4A7B7D212DDEA900F9CE93 /* Assets.xcassets */; };
 		CD4A7B81212DDEA900F9CE93 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD4A7B7F212DDEA900F9CE93 /* LaunchScreen.storyboard */; };
+		CD96D6F4212E0BA50048D296 /* StartMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD96D6F3212E0BA50048D296 /* StartMenu.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		CD4A7B7D212DDEA900F9CE93 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CD4A7B80212DDEA900F9CE93 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CD4A7B82212DDEA900F9CE93 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CD96D6F3212E0BA50048D296 /* StartMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartMenu.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,11 +62,12 @@
 		CD4A7B6F212DDEA800F9CE93 /* Burst */ = {
 			isa = PBXGroup;
 			children = (
-				CD4A7B72212DDEA800F9CE93 /* GameScene.sks */,
-				CD4A7B74212DDEA800F9CE93 /* Actions.sks */,
+				CD96D6F3212E0BA50048D296 /* StartMenu.swift */,
 				CD4A7B76212DDEA800F9CE93 /* GameScene.swift */,
 				CD4A7B78212DDEA800F9CE93 /* GameViewController.swift */,
 				CD4A7B7A212DDEA800F9CE93 /* Main.storyboard */,
+				CD4A7B72212DDEA800F9CE93 /* GameScene.sks */,
+				CD4A7B74212DDEA800F9CE93 /* Actions.sks */,
 				CD4A7B7D212DDEA900F9CE93 /* Assets.xcassets */,
 				CD4A7B70212DDEA800F9CE93 /* AppDelegate.swift */,
 				CD4A7B7F212DDEA900F9CE93 /* LaunchScreen.storyboard */,
@@ -147,6 +150,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CD4A7B77212DDEA800F9CE93 /* GameScene.swift in Sources */,
+				CD96D6F4212E0BA50048D296 /* StartMenu.swift in Sources */,
 				CD4A7B79212DDEA800F9CE93 /* GameViewController.swift in Sources */,
 				CD4A7B71212DDEA800F9CE93 /* AppDelegate.swift in Sources */,
 			);
