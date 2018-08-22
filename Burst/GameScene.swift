@@ -1,6 +1,9 @@
 import SpriteKit
 import GameplayKit
 import Foundation
+import UIKit
+
+private var bubblesPopped: Int = 0
 
 class GameScene: SKScene {
     private let screenSize: CGRect = UIScreen.main.bounds
@@ -10,7 +13,6 @@ class GameScene: SKScene {
     private var minY: Double = 0.0
     private var bubbleTimer: Timer! = Timer()
     private var endTimer: Timer! = Timer()
-    private var removeTimer: Timer! = Timer()
     
     override func didMove(to view: SKView) {
         maxX = Double(screenSize.width - 10.0)
@@ -40,7 +42,6 @@ class GameScene: SKScene {
         let duration: TimeInterval = 10.0
         let scaleAction = SKAction.scale(to: maxScale, duration: duration)
         bubble.run(scaleAction)
-        
     }
     
     func randomColor() -> UIColor! {
@@ -65,7 +66,8 @@ class GameScene: SKScene {
         endTimer = nil
         bubbleTimer.invalidate()
         bubbleTimer = nil
-        var timeBetween: TimeInterval = 1.0
+        UserDefaults.standard.set(String(bubblesPopped), forKey: "High Score")
+        bubblesPopped = 0
         for node in self.children {
             node.removeFromParent()
         }
@@ -75,6 +77,7 @@ class GameScene: SKScene {
 class Bubble : SKShapeNode {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.removeFromParent()
+        bubblesPopped += 1
     }
     
     var radius: Double {
