@@ -4,12 +4,17 @@ import Foundation
 import UIKit
 
 private var bubblesPopped: Int = 0
+let ud = UserDefaults.standard
 
 /*
- phases different speeds
- sounds
- color themes
- different game modes
+ -sounds
+ -color themes
+ -different game modes
+    -bubbles appear at edge and attack ship in center
+    -multiple bubbles of same color spawn at once
+    -bubbles stay same size, ends when too many
+ -improve UI
+ -show score after run
  */
 
 class GameScene: SKScene {
@@ -53,7 +58,7 @@ class GameScene: SKScene {
         if (endTimer != nil) {
             endTimer.invalidate()
         }
-        phaseLengthTimer = Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(startPhase), userInfo: nil, repeats: false)
+        phaseLengthTimer = Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(startPhase), userInfo: nil, repeats: false)
     }
     
     func setPhase() {
@@ -116,6 +121,10 @@ class GameScene: SKScene {
             node.removeFromParent()
         }
         gameVC?.dismiss(animated: true)
+        if (ud.integer(forKey: "Score") > ud.integer(forKey: "High Score")) {
+            ud.set(bubblesPopped, forKey: "High Score")
+        }
+        bubblesPopped = 0
     }
 }
 
@@ -123,7 +132,7 @@ class Bubble : SKShapeNode {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.removeFromParent()
         bubblesPopped += 1
-        UserDefaults.standard.set(String(bubblesPopped), forKey: "High Score")
+        ud.set(String(bubblesPopped), forKey: "Score")
     }
     
     var radius: Double {

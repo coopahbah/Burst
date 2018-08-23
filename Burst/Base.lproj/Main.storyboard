@@ -26,7 +26,13 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="High Score" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ksU-IP-4p3">
-                                <rect key="frame" x="149.5" y="363.5" width="76" height="18"/>
+                                <rect key="frame" x="149.5" y="391" width="76" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recent Score" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ofz-NH-ilc">
+                                <rect key="frame" x="141.5" y="360" width="92" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -37,12 +43,15 @@
                             <constraint firstItem="ksU-IP-4p3" firstAttribute="centerX" secondItem="7PK-8z-Udn" secondAttribute="centerX" id="4eL-II-Og4"/>
                             <constraint firstItem="elN-en-KJs" firstAttribute="centerX" secondItem="7PK-8z-Udn" secondAttribute="centerX" id="8Sg-FM-0X2"/>
                             <constraint firstItem="elN-en-KJs" firstAttribute="centerY" secondItem="7PK-8z-Udn" secondAttribute="centerY" constant="-35" id="XVs-Ol-7pL"/>
-                            <constraint firstItem="ksU-IP-4p3" firstAttribute="top" secondItem="elN-en-KJs" secondAttribute="bottom" constant="50" id="gSr-8v-OsL"/>
+                            <constraint firstItem="Ofz-NH-ilc" firstAttribute="top" secondItem="elN-en-KJs" secondAttribute="bottom" constant="46.5" id="jpl-Wi-79Z"/>
+                            <constraint firstItem="ksU-IP-4p3" firstAttribute="top" secondItem="Ofz-NH-ilc" secondAttribute="bottom" constant="13" id="o7q-9e-yMe"/>
+                            <constraint firstItem="Ofz-NH-ilc" firstAttribute="centerX" secondItem="7PK-8z-Udn" secondAttribute="centerX" id="t2e-pb-5y1"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="80H-Tv-eqn"/>
                     </view>
                     <connections>
                         <outlet property="HighScore" destination="ksU-IP-4p3" id="wLW-HQ-ifE"/>
+                        <outlet property="RecentScore" destination="Ofz-NH-ilc" id="p4r-qs-meT"/>
                         <segue destination="BV1-FR-VrT" kind="show" identifier="Play" id="H51-2T-IKo"/>
                     </connections>
                 </viewController>
