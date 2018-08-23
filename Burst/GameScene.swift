@@ -4,7 +4,6 @@ import Foundation
 import UIKit
 
 private var bubblesPopped: Int = 0
-let ud = UserDefaults.standard
 
 /*
  -sounds
@@ -19,6 +18,7 @@ let ud = UserDefaults.standard
 
 class GameScene: SKScene {
     var gameVC: GameViewController?
+    let ud = UserDefaults.standard
     
     private let screenSize: CGRect = UIScreen.main.bounds
     private var maxX: Double = 0.0
@@ -41,6 +41,7 @@ class GameScene: SKScene {
         maxY = Double(screenSize.height - 10.0)
         minY = -1 * maxY
         
+        bubblesPopped = 0
         startPhase()
     }
     
@@ -117,14 +118,18 @@ class GameScene: SKScene {
             bubbleTimer.invalidate()
             bubbleTimer = nil
         }
+        if (endTimer != nil) {
+            endTimer.invalidate()
+            endTimer = nil
+        }
         for node in self.children {
             node.removeFromParent()
         }
         gameVC?.dismiss(animated: true)
-        if (ud.integer(forKey: "Score") > ud.integer(forKey: "High Score")) {
+        if (bubblesPopped > ud.integer(forKey: "High Score")) {
             ud.set(bubblesPopped, forKey: "High Score")
         }
-        bubblesPopped = 0
+        ud.set(bubblesPopped, forKey: "Score")
     }
 }
 
@@ -132,7 +137,6 @@ class Bubble : SKShapeNode {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.removeFromParent()
         bubblesPopped += 1
-        ud.set(String(bubblesPopped), forKey: "Score")
     }
     
     var radius: Double {

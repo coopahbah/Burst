@@ -7,29 +7,26 @@ class StartMenu : UIViewController {
     @IBOutlet weak var RecentScore: UILabel!
     @IBOutlet weak var HighScore: UILabel!
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+    }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
         
         setRecentScore()
         setHighScore()
     }
     
     func setRecentScore() {
-        var recentScore = ud.string(forKey: "Score")
-        if (recentScore == nil) {
-            recentScore = "0"
-            ud.set(recentScore, forKey: "Score")
-        }
-        RecentScore.text = "Recent Score: " + recentScore!
+        let recentScore = ud.integer(forKey: "Score")
+        print(recentScore)
+        RecentScore.text = "Recent Score: " + String(recentScore)
     }
     
     func setHighScore() {
-        var highScore = ud.string(forKey: "High Score")
-        if (highScore == nil) {
-            highScore = "0"
-            ud.set(highScore, forKey: "High Score")
-        }
-        HighScore.text = "High Score: " + highScore!
+        let highScore = ud.integer(forKey: "High Score")
+        HighScore.text = "High Score: " + String(highScore)
     }
     
     @IBAction func Play(_ sender: Any) {
