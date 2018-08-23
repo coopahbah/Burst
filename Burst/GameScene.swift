@@ -13,7 +13,6 @@ private var bubblesPopped: Int = 0
     -multiple bubbles of same color spawn at once
     -bubbles stay same size, ends when too many
  -improve UI
- -show score after run
  */
 
 class GameScene: SKScene {
