@@ -11,20 +11,48 @@ class GameScene: SKScene {
     private var minX: Double = 0.0
     private var maxY: Double = 0.0
     private var minY: Double = 0.0
+    
+    private var phase: Int = 1
+    
+    var maxScale: CGFloat = 75.0
+    var duration: TimeInterval = 5.0
+    
     private var bubbleTimer: Timer! = Timer()
     private var endTimer: Timer! = Timer()
+    private var endPhaseTimer: Timer! = Timer()
+    private var phaseLengthTimer: Timer! = Timer()
+    private var noBubblesTimer: Timer! = Timer()
     
     var gameVC: GameViewController?
-    
     
     override func didMove(to view: SKView) {
         maxX = Double(screenSize.width - 10.0)
         minX = -1 * maxX
         maxY = Double(screenSize.height - 10.0)
         minY = -1 * maxY
+        noBubblesTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(noBubbles), userInfo: nil, repeats: true)
         
+        startPhase()
+    }
+    
+    @objc func startPhase() {
         bubbleTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(createBubble), userInfo: nil, repeats: true)
         endTimer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(checkForEnd), userInfo: nil, repeats: true)
+        endPhaseTimer = Timer.scheduledTimer(timeInterval: 15.0, target: self, selector: #selector(endPhase), userInfo: nil, repeats: false)
+    }
+    
+    @objc func endPhase() {
+        if (bubbleTimer != nil) {
+            bubbleTimer.invalidate()
+        }
+        if (endTimer != nil) {
+            endTimer.invalidate()
+        }
+        phaseLengthTimer = Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(startPhase), userInfo: nil, repeats: false)
+    }
+    
+    @objc func noBubbles() -> Bool {
+        return self.parent?.children.count == 0
     }
     
     @objc func createBubble() {
@@ -41,8 +69,6 @@ class GameScene: SKScene {
     }
     
     func growBubble(bubble: Bubble) {
-        let maxScale: CGFloat = 75.0
-        let duration: TimeInterval = 10.0
         let scaleAction = SKAction.scale(to: maxScale, duration: duration)
         bubble.run(scaleAction)
     }
@@ -57,19 +83,21 @@ class GameScene: SKScene {
     @objc func checkForEnd() {
         for node in self.children {
             let bubble = node as! Bubble
-            if (bubble.xScale >= 50.0) {
+            if (bubble.xScale >= 75.0) {
                 endGame()
             }
         }
     }
     
     func endGame() {
-        endTimer.invalidate()
-        endTimer = nil
-        bubbleTimer.invalidate()
-        bubbleTimer = nil
-        UserDefaults.standard.set(String(bubblesPopped), forKey: "High Score")
-        bubblesPopped = 0
+        if (endTimer != nil) {
+            endTimer.invalidate()
+            endTimer = nil
+        }
+        if (bubbleTimer != nil) {
+            bubbleTimer.invalidate()
+            bubbleTimer = nil
+        }
         for node in self.children {
             node.removeFromParent()
         }
@@ -81,6 +109,7 @@ class Bubble : SKShapeNode {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.removeFromParent()
         bubblesPopped += 1
+        UserDefaults.standard.set(String(bubblesPopped), forKey: "High Score")
     }
     
     var radius: Double {
