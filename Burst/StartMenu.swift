@@ -20,7 +20,6 @@ class StartMenu : UIViewController {
     
     func setRecentScore() {
         let recentScore = ud.integer(forKey: "Score")
-        print(recentScore)
         RecentScore.text = "Recent Score: " + String(recentScore)
     }
     
@@ -31,6 +30,6 @@ class StartMenu : UIViewController {
     
     @IBAction func Play(_ sender: Any) {
         view.endEditing(true)
-        performSegue(withIdentifier: "Play", sender: self)
+        performSegue(withIdentifier: "PlayGame", sender: self)
     }
 }

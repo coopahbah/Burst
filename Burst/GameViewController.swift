@@ -7,12 +7,19 @@ class GameViewController: UIViewController {
         super.viewDidLoad()
         
         if let view = self.view as! SKView? {
-            if let scene = GameScene(fileNamed: "GameScene") {
-                scene.gameVC = self
-                scene.scaleMode = .aspectFill
-                view.presentScene(scene)
-            }
+            let scene = chooseGame()
+            scene.gameVC = self
+            scene.scaleMode = .aspectFill
+            view.presentScene(scene)
             view.ignoresSiblingOrder = true
+        }
+    }
+    
+    func chooseGame() -> GameScene {
+        let chosenGame = UserDefaults.standard.string(forKey: "Game")
+        switch chosenGame {
+        default:
+            return GameScene(fileNamed: "GameScene")!
         }
     }
 

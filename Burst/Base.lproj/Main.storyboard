@@ -52,7 +52,7 @@
                     <connections>
                         <outlet property="HighScore" destination="ksU-IP-4p3" id="wLW-HQ-ifE"/>
                         <outlet property="RecentScore" destination="Ofz-NH-ilc" id="p4r-qs-meT"/>
-                        <segue destination="BV1-FR-VrT" kind="show" identifier="Play" id="H51-2T-IKo"/>
+                        <segue destination="BV1-FR-VrT" kind="show" identifier="PlayGame" id="H51-2T-IKo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6j6-cK-miK" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -66,7 +66,7 @@
                     <view key="view" multipleTouchEnabled="YES" contentMode="scaleToFill" id="3se-qz-xqx" customClass="SKView">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="deviceRGB"/>
                         <viewLayoutGuide key="safeArea" id="4qk-I5-YsI"/>
                     </view>
                     <connections>
@@ -75,7 +75,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="238" y="27"/>
+            <point key="canvasLocation" x="225" y="-502"/>
         </scene>
     </scenes>
 </document>
