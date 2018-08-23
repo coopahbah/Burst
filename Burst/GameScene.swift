@@ -5,40 +5,45 @@ import UIKit
 
 private var bubblesPopped: Int = 0
 
+/*
+ phases different speeds
+ sounds
+ color themes
+ different game modes
+ */
+
 class GameScene: SKScene {
+    var gameVC: GameViewController?
+    
     private let screenSize: CGRect = UIScreen.main.bounds
     private var maxX: Double = 0.0
     private var minX: Double = 0.0
     private var maxY: Double = 0.0
     private var minY: Double = 0.0
-    
-    private var phase: Int = 1
-    
-    var maxScale: CGFloat = 75.0
-    var duration: TimeInterval = 5.0
+    private let maxScale: CGFloat = 75.0
     
     private var bubbleTimer: Timer! = Timer()
     private var endTimer: Timer! = Timer()
     private var endPhaseTimer: Timer! = Timer()
     private var phaseLengthTimer: Timer! = Timer()
-    private var noBubblesTimer: Timer! = Timer()
     
-    var gameVC: GameViewController?
+    private var bubbleAppear: TimeInterval = 1.0
+    private var growDuration: TimeInterval = 6.0
     
     override func didMove(to view: SKView) {
         maxX = Double(screenSize.width - 10.0)
         minX = -1 * maxX
         maxY = Double(screenSize.height - 10.0)
         minY = -1 * maxY
-        noBubblesTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(noBubbles), userInfo: nil, repeats: true)
         
         startPhase()
     }
     
     @objc func startPhase() {
-        bubbleTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(createBubble), userInfo: nil, repeats: true)
+        bubbleTimer = Timer.scheduledTimer(timeInterval: bubbleAppear, target: self, selector: #selector(createBubble), userInfo: nil, repeats: true)
         endTimer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(checkForEnd), userInfo: nil, repeats: true)
         endPhaseTimer = Timer.scheduledTimer(timeInterval: 15.0, target: self, selector: #selector(endPhase), userInfo: nil, repeats: false)
+        setPhase()
     }
     
     @objc func endPhase() {
@@ -51,8 +56,17 @@ class GameScene: SKScene {
         phaseLengthTimer = Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(startPhase), userInfo: nil, repeats: false)
     }
     
-    @objc func noBubbles() -> Bool {
-        return self.parent?.children.count == 0
+    func setPhase() {
+        if (bubbleAppear > 0.1) {
+            bubbleAppear -= 0.15
+        } else {
+            bubbleAppear = bubbleAppear / 2
+        }
+        if (growDuration > 2.0) {
+            growDuration -= 0.5
+        } else if (growDuration > 1.0) {
+            growDuration -= 0.1
+        }
     }
     
     @objc func createBubble() {
@@ -69,7 +83,7 @@ class GameScene: SKScene {
     }
     
     func growBubble(bubble: Bubble) {
-        let scaleAction = SKAction.scale(to: maxScale, duration: duration)
+        let scaleAction = SKAction.scale(to: maxScale, duration: growDuration)
         bubble.run(scaleAction)
     }
     
