@@ -3,17 +3,6 @@ import GameplayKit
 import Foundation
 import UIKit
 
-/*
- -sounds
- -color themes
- -different game modes
-    -bubbles appear at edge and attack ship in center
-    -multiple bubbles of same color spawn at once
-    -bubbles stay same size, ends when too many
-    -bubbles coming from side of screen, player stuck on side (almost like guitar hero)
- -improve UI
- */
-
 private var bubblesPopped: Int = 0
 
 class GameScene: SKScene {
@@ -41,7 +30,7 @@ class GameScene: SKScene {
     }
     
     @objc func startPhase() {
-        bubbleTimer = Timer.scheduledTimer(timeInterval: bubbleAppear, target: self, selector: #selector(createBubble), userInfo: nil, repeats: true)
+        bubbleTimer = Timer.scheduledTimer(timeInterval: bubbleAppear, target: self, selector: #selector(addBubble), userInfo: nil, repeats: true)
         endTimer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(checkForEnd), userInfo: nil, repeats: true)
         endPhaseTimer = Timer.scheduledTimer(timeInterval: 15.0, target: self, selector: #selector(endPhase), userInfo: nil, repeats: false)
         setPhase()
@@ -70,7 +59,7 @@ class GameScene: SKScene {
         }
     }
     
-    @objc func createBubble() {
+    @objc func addBubble() {
         let xPosition = randomDouble(upper: maxX)
         let yPosition = randomDouble(upper: maxY)
         let bubble = Bubble(circleOfRadius: 10.0)

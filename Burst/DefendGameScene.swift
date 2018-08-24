@@ -6,12 +6,16 @@ let playerCategory:UInt32 = 0x1 << 0;
 let bubbleCategory:UInt32 = 0x1 << 1;
 
 class DefendGameScene: SKScene, SKPhysicsContactDelegate {
-    var gameVC: GameViewController?
     let ud = UserDefaults.standard
     
     private let screenSize: CGRect = UIScreen.main.bounds
     private var maxX: Double = 0.0
     private var maxY: Double = 0.0
+    
+    private var bubbleTimer: Timer! = Timer()
+    
+    private var bubbleAppear: TimeInterval = 1.0
+    private var bubbleSpeed: TimeInterval = 6.0
     
     override func didMove(to view: SKView) {
         self.physicsWorld.contactDelegate = self
@@ -20,7 +24,11 @@ class DefendGameScene: SKScene, SKPhysicsContactDelegate {
         
         bubblesPopped = 0
         addPlayer()
-        addBubble()
+        startPhase()
+    }
+    
+    @objc func startPhase() {
+        bubbleTimer = Timer.scheduledTimer(timeInterval: bubbleAppear, target: self, selector: #selector(addBubble), userInfo: nil, repeats: true)
     }
     
     func addPlayer() {
@@ -31,7 +39,7 @@ class DefendGameScene: SKScene, SKPhysicsContactDelegate {
         player.strokeColor = UIColor.clear
         player.alpha = 1.0
         
-        player.physicsBody = SKPhysicsBody(rectangleOf: playerSize)
+        player.physicsBody = SKPhysicsBody(circleOfRadius: playerSize.width / 2)
         player.physicsBody!.isDynamic = true
         player.physicsBody!.categoryBitMask = playerCategory
         player.physicsBody!.contactTestBitMask = bubbleCategory
@@ -41,7 +49,7 @@ class DefendGameScene: SKScene, SKPhysicsContactDelegate {
         self.addChild(player)
     }
     
-    func addBubble() {
+    @objc func addBubble() {
         let bubble = DefendBubble(circleOfRadius: 25.0)
         bubble.position = randomEdgePosition(width: maxX, height: maxY)
         bubble.isUserInteractionEnabled = true
@@ -61,12 +69,27 @@ class DefendGameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func moveBubble(bubble: DefendBubble) {
-        let moveAction = SKAction.move(to: CGPoint(x: 0.0, y: 0.0), duration: 6.0)
+        let moveAction = SKAction.move(to: CGPoint(x: 0.0, y: 0.0), duration: bubbleSpeed)
         bubble.run(moveAction)
     }
     
     func didBegin(_ contact: SKPhysicsContact) {
-        print("ow")
+        endGame()
+    }
+    
+    func endGame() {
+        if (bubbleTimer != nil) {
+            bubbleTimer.invalidate()
+            bubbleTimer = nil
+        }
+        for node in self.children {
+            node.removeFromParent()
+        }
+        gameVC?.dismiss(animated: true)
+        if (bubblesPopped > ud.integer(forKey: "High Score")) {
+            ud.set(bubblesPopped, forKey: "High Score")
+        }
+        ud.set(bubblesPopped, forKey: "Score")
     }
 }
 
