@@ -30,13 +30,6 @@ class StartMenu : UIViewController {
     
     @IBAction func Play(_ sender: Any) {
         view.endEditing(true)
-        ud.set("Classic", forKey: "Game")
-        performSegue(withIdentifier: "PlayGame", sender: self)
-    }
-    
-    @IBAction func PlayDefense(_ sender: Any) {
-        view.endEditing(true)
-        ud.set("Defense", forKey: "Game")
-        performSegue(withIdentifier: "PlayGame", sender: self)
+        performSegue(withIdentifier: "ChooseGame", sender: self)
     }
 }

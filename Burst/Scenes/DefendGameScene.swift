@@ -13,6 +13,8 @@ class DefendGameScene: SKScene, SKPhysicsContactDelegate {
     private var maxY: Double = 0.0
     
     private var bubbleTimer: Timer! = Timer()
+    private var endPhaseTimer: Timer! = Timer()
+    private var downtimeTimer: Timer! = Timer()
     
     private var bubbleAppear: TimeInterval = 1.0
     private var bubbleSpeed: TimeInterval = 6.0
@@ -29,6 +31,17 @@ class DefendGameScene: SKScene, SKPhysicsContactDelegate {
     
     @objc func startPhase() {
         bubbleTimer = Timer.scheduledTimer(timeInterval: bubbleAppear, target: self, selector: #selector(addBubble), userInfo: nil, repeats: true)
+        endPhaseTimer = Timer.scheduledTimer(timeInterval: 15.0, target: self, selector: #selector(endPhase), userInfo: nil, repeats: false)
+    }
+    
+    @objc func endPhase() {
+        if (bubbleTimer != nil) {
+            bubbleTimer.invalidate()
+        }
+        if (endPhaseTimer != nil) {
+            endPhaseTimer.invalidate()
+        }
+        downtimeTimer = Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(startPhase), userInfo: nil, repeats: false)
     }
     
     func addPlayer() {
@@ -78,13 +91,15 @@ class DefendGameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func endGame() {
-        if (bubbleTimer != nil) {
-            bubbleTimer.invalidate()
-            bubbleTimer = nil
-        }
         for node in self.children {
             node.removeFromParent()
         }
+        
+        let timers: [Timer?] = [bubbleTimer, endPhaseTimer, downtimeTimer]
+        for timer in timers {
+            timer?.invalidate()
+        }
+        
         gameVC?.dismiss(animated: true)
         if (bubblesPopped > ud.integer(forKey: "High Score")) {
             ud.set(bubblesPopped, forKey: "High Score")

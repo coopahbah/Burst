@@ -18,8 +18,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="elN-en-KJs">
-                                <rect key="frame" x="163.5" y="283.5" width="49" height="30"/>
-                                <state key="normal" title="Classic"/>
+                                <rect key="frame" x="172.5" y="283.5" width="30" height="30"/>
+                                <state key="normal" title="Play"/>
                                 <connections>
                                     <action selector="Play:" destination="e8V-3k-oP2" eventType="touchUpInside" id="cha-QC-NI9"/>
                                 </connections>
@@ -36,21 +36,12 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5xo-VD-pev">
-                                <rect key="frame" x="159.5" y="318" width="57" height="30"/>
-                                <state key="normal" title="Defense"/>
-                                <connections>
-                                    <action selector="PlayDefense:" destination="e8V-3k-oP2" eventType="touchUpInside" id="t78-oD-Nwf"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="5xo-VD-pev" firstAttribute="top" secondItem="elN-en-KJs" secondAttribute="bottom" constant="4.5" id="098-rC-tlu"/>
                             <constraint firstItem="ksU-IP-4p3" firstAttribute="centerX" secondItem="7PK-8z-Udn" secondAttribute="centerX" id="4eL-II-Og4"/>
                             <constraint firstItem="elN-en-KJs" firstAttribute="centerX" secondItem="7PK-8z-Udn" secondAttribute="centerX" id="8Sg-FM-0X2"/>
                             <constraint firstItem="elN-en-KJs" firstAttribute="centerY" secondItem="7PK-8z-Udn" secondAttribute="centerY" constant="-35" id="XVs-Ol-7pL"/>
-                            <constraint firstItem="5xo-VD-pev" firstAttribute="centerX" secondItem="7PK-8z-Udn" secondAttribute="centerX" id="c3O-HU-SET"/>
                             <constraint firstItem="Ofz-NH-ilc" firstAttribute="top" secondItem="elN-en-KJs" secondAttribute="bottom" constant="46.5" id="jpl-Wi-79Z"/>
                             <constraint firstItem="ksU-IP-4p3" firstAttribute="top" secondItem="Ofz-NH-ilc" secondAttribute="bottom" constant="13" id="o7q-9e-yMe"/>
                             <constraint firstItem="Ofz-NH-ilc" firstAttribute="centerX" secondItem="7PK-8z-Udn" secondAttribute="centerX" id="t2e-pb-5y1"/>
@@ -60,12 +51,52 @@
                     <connections>
                         <outlet property="HighScore" destination="ksU-IP-4p3" id="wLW-HQ-ifE"/>
                         <outlet property="RecentScore" destination="Ofz-NH-ilc" id="p4r-qs-meT"/>
-                        <segue destination="BV1-FR-VrT" kind="show" identifier="PlayGame" id="H51-2T-IKo"/>
+                        <segue destination="N0x-Mf-ECu" kind="show" identifier="ChooseGame" id="uSJ-I3-ng9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6j6-cK-miK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-617" y="27"/>
+        </scene>
+        <!--Game Select Menu-->
+        <scene sceneID="fdB-3M-aAG">
+            <objects>
+                <viewController id="N0x-Mf-ECu" customClass="GameSelectMenu" customModule="Burst" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="K9T-ML-2DG">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UVt-4s-omU">
+                                <rect key="frame" x="163" y="318.5" width="49" height="30"/>
+                                <state key="normal" title="Classic"/>
+                                <connections>
+                                    <action selector="PlayClassic:" destination="N0x-Mf-ECu" eventType="touchUpInside" id="SiE-AS-uIX"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fqd-fn-zXV">
+                                <rect key="frame" x="159" y="356" width="57" height="30"/>
+                                <state key="normal" title="Defense"/>
+                                <connections>
+                                    <action selector="PlayDefense:" destination="N0x-Mf-ECu" eventType="touchUpInside" id="ONY-Hh-2PD"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="fqd-fn-zXV" firstAttribute="top" secondItem="UVt-4s-omU" secondAttribute="bottom" constant="7.5" id="1Ks-69-DU6"/>
+                            <constraint firstItem="fqd-fn-zXV" firstAttribute="centerX" secondItem="K9T-ML-2DG" secondAttribute="centerX" id="JSc-bT-gHs"/>
+                            <constraint firstItem="UVt-4s-omU" firstAttribute="centerY" secondItem="K9T-ML-2DG" secondAttribute="centerY" id="Vmf-fX-56L"/>
+                            <constraint firstItem="UVt-4s-omU" firstAttribute="centerX" secondItem="K9T-ML-2DG" secondAttribute="centerX" id="rDG-Dz-e5N"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="lJ3-Um-Ep6"/>
+                    </view>
+                    <connections>
+                        <segue destination="BV1-FR-VrT" kind="show" identifier="PlayGame" id="Dq5-uf-WrK"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="auw-nv-Nmq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="70" y="524"/>
         </scene>
         <!--Game View Controller-->
         <scene sceneID="tXr-a1-R10">
@@ -83,7 +114,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="361" y="27"/>
+            <point key="canvasLocation" x="790" y="27"/>
         </scene>
     </scenes>
 </document>

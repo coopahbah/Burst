@@ -16,7 +16,7 @@ class GameScene: SKScene {
     private var bubbleTimer: Timer! = Timer()
     private var endTimer: Timer! = Timer()
     private var endPhaseTimer: Timer! = Timer()
-    private var phaseLengthTimer: Timer! = Timer()
+    private var downtimeTimer: Timer! = Timer()
     
     private var bubbleAppear: TimeInterval = 1.0
     private var growDuration: TimeInterval = 6.0
@@ -43,7 +43,7 @@ class GameScene: SKScene {
         if (endTimer != nil) {
             endTimer.invalidate()
         }
-        phaseLengthTimer = Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(startPhase), userInfo: nil, repeats: false)
+        downtimeTimer = Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(startPhase), userInfo: nil, repeats: false)
     }
     
     func setPhase() {
@@ -87,21 +87,15 @@ class GameScene: SKScene {
     }
     
     func endGame() {
-        if (endTimer != nil) {
-            endTimer.invalidate()
-            endTimer = nil
-        }
-        if (bubbleTimer != nil) {
-            bubbleTimer.invalidate()
-            bubbleTimer = nil
-        }
-        if (endTimer != nil) {
-            endTimer.invalidate()
-            endTimer = nil
-        }
         for node in self.children {
             node.removeFromParent()
         }
+        
+        let timers: [Timer?] = [bubbleTimer, endTimer, endPhaseTimer, downtimeTimer]
+        for timer in timers {
+            timer?.invalidate()
+        }
+
         gameVC?.dismiss(animated: true)
         if (bubblesPopped > ud.integer(forKey: "High Score")) {
             ud.set(bubblesPopped, forKey: "High Score")
