@@ -8,27 +8,37 @@ class DefendGameScene: SKScene {
     
     private let screenSize: CGRect = UIScreen.main.bounds
     private var maxX: Double = 0.0
-    private var minX: Double = 0.0
     private var maxY: Double = 0.0
-    private var minY: Double = 0.0
     
     override func didMove(to view: SKView) {
         maxX = Double(screenSize.width)
-        minX = -1 * maxX
         maxY = Double(screenSize.height)
-        minY = -1 * maxY
         
         bubblesPopped = 0
         addPlayer()
     }
     
     func addPlayer() {
-        let playerSize = CGSize(width: 20, height: 20)
-        let player = SKShapeNode(rectOf: playerSize, cornerRadius: 5.0)
+        let playerSize = CGSize(width: 75, height: 75)
+        let player = SKShapeNode(rectOf: playerSize, cornerRadius: 15.0)
         player.position = CGPoint(x: 0.0, y: 0.0)
-        player.fillColor = randomColor()
+        player.fillColor = UIColor.darkGray
         player.strokeColor = UIColor.clear
         player.alpha = 1.0
         self.addChild(player)
     }
+    
+    func addBubble() {
+        let bubble = DefendBubble(circleOfRadius: 25.0)
+        bubble.position = randomEdgePosition(width: maxX, height: maxY)
+        bubble.isUserInteractionEnabled = true
+        bubble.fillColor = randomColor()
+        bubble.strokeColor = UIColor.clear
+        bubble.alpha = 1.0
+        self.addChild(bubble)
+    }
+}
+
+class DefendBubble : SKShapeNode {
+    
 }

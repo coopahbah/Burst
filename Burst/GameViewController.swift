@@ -21,15 +21,7 @@ class GameViewController: UIViewController {
         case "Defense":
             return SKScene(fileNamed: "DefendGameScene")!
         default:
-            return SKScene(fileNamed: "GameScene")!
+            return SKScene(fileNamed: "ClassicGameScene")!
         }
-    }
-
-    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-        return .portrait
-    }
-
-    override var prefersStatusBarHidden: Bool {
-        return true
     }
 }
