@@ -17,10 +17,12 @@ class DefendGameScene: SKScene, SKPhysicsContactDelegate {
     private var downtimeTimer: Timer! = Timer()
     
     private var bubbleAppear: TimeInterval = 1.0
-    private var bubbleSpeed: TimeInterval = 6.0
+    private var bubbleForce: Float = 8.0
     
     override func didMove(to view: SKView) {
         self.physicsWorld.contactDelegate = self
+        let zeroGravityVector = CGVector(dx: 0.0, dy: 0.0)
+        self.physicsWorld.gravity = zeroGravityVector
         maxX = Double(screenSize.width)
         maxY = Double(screenSize.height)
         
@@ -41,7 +43,7 @@ class DefendGameScene: SKScene, SKPhysicsContactDelegate {
         if (endPhaseTimer != nil) {
             endPhaseTimer.invalidate()
         }
-        downtimeTimer = Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(startPhase), userInfo: nil, repeats: false)
+        downtimeTimer = Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(startPhase), userInfo: nil, repeats: false)
     }
     
     func addPlayer() {
@@ -57,9 +59,18 @@ class DefendGameScene: SKScene, SKPhysicsContactDelegate {
         player.physicsBody!.categoryBitMask = playerCategory
         player.physicsBody!.contactTestBitMask = bubbleCategory
         player.physicsBody!.collisionBitMask = playerCategory
-        player.physicsBody!.affectedByGravity = false
+        player.physicsBody!.affectedByGravity = true
         
         self.addChild(player)
+        setUpGravity(player: player)
+    }
+    
+    func setUpGravity(player: SKShapeNode) {
+        let gravityField = SKFieldNode.radialGravityField()
+        gravityField.isEnabled = true
+        gravityField.position = player.position
+        gravityField.strength = Float(bubbleForce)
+        self.addChild(gravityField)
     }
     
     @objc func addBubble() {
@@ -75,15 +86,11 @@ class DefendGameScene: SKScene, SKPhysicsContactDelegate {
         bubble.physicsBody!.categoryBitMask = bubbleCategory
         bubble.physicsBody!.contactTestBitMask = playerCategory
         bubble.physicsBody!.collisionBitMask = bubbleCategory
-        bubble.physicsBody!.affectedByGravity = false
+        bubble.physicsBody!.affectedByGravity = true
         
         self.addChild(bubble)
-        moveBubble(bubble: bubble)
-    }
-    
-    func moveBubble(bubble: DefendBubble) {
-        let moveAction = SKAction.move(to: CGPoint(x: 0.0, y: 0.0), duration: bubbleSpeed)
-        bubble.run(moveAction)
+        
+        bubble.physicsBody!.friction = 0.0
     }
     
     func didBegin(_ contact: SKPhysicsContact) {

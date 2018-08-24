@@ -13,4 +13,8 @@ class GameSelectMenu: UIViewController {
         ud.set("Defense", forKey: "Game")
         performSegue(withIdentifier: "PlayGame", sender: self)
     }
+    
+    @IBAction func Back(_ sender: Any) {
+        performSegue(withIdentifier: "BackToMenu", sender: self)
+    }
 }
