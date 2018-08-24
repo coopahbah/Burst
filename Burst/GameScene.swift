@@ -17,7 +17,6 @@ import UIKit
 private var bubblesPopped: Int = 0
 
 class GameScene: SKScene {
-    var gameVC: GameViewController?
     let ud = UserDefaults.standard
     
     private let screenSize: CGRect = UIScreen.main.bounds

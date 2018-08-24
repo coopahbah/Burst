@@ -8,31 +8,25 @@ class GameViewController: UIViewController {
         
         if let view = self.view as! SKView? {
             let scene = chooseGame()
-            scene.gameVC = self
+            gameVC = self
             scene.scaleMode = .aspectFill
             view.presentScene(scene)
             view.ignoresSiblingOrder = true
         }
     }
     
-    func chooseGame() -> GameScene {
+    func chooseGame() -> SKScene {
         let chosenGame = UserDefaults.standard.string(forKey: "Game")
         switch chosenGame {
+        case "Defense":
+            return SKScene(fileNamed: "DefendGameScene")!
         default:
-            return GameScene(fileNamed: "GameScene")!
+            return SKScene(fileNamed: "GameScene")!
         }
-    }
-
-    override var shouldAutorotate: Bool {
-        return false
     }
 
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         return .portrait
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
     }
 
     override var prefersStatusBarHidden: Bool {

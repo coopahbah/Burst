@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.13.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="e8V-3k-oP2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="e8V-3k-oP2">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.9"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -19,8 +18,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="elN-en-KJs">
-                                <rect key="frame" x="172.5" y="283.5" width="30" height="30"/>
-                                <state key="normal" title="Play"/>
+                                <rect key="frame" x="163.5" y="283.5" width="49" height="30"/>
+                                <state key="normal" title="Classic"/>
                                 <connections>
                                     <action selector="Play:" destination="e8V-3k-oP2" eventType="touchUpInside" id="cha-QC-NI9"/>
                                 </connections>
@@ -37,12 +36,21 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5xo-VD-pev">
+                                <rect key="frame" x="159.5" y="318" width="57" height="30"/>
+                                <state key="normal" title="Defense"/>
+                                <connections>
+                                    <action selector="PlayDefense:" destination="e8V-3k-oP2" eventType="touchUpInside" id="t78-oD-Nwf"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="5xo-VD-pev" firstAttribute="top" secondItem="elN-en-KJs" secondAttribute="bottom" constant="4.5" id="098-rC-tlu"/>
                             <constraint firstItem="ksU-IP-4p3" firstAttribute="centerX" secondItem="7PK-8z-Udn" secondAttribute="centerX" id="4eL-II-Og4"/>
                             <constraint firstItem="elN-en-KJs" firstAttribute="centerX" secondItem="7PK-8z-Udn" secondAttribute="centerX" id="8Sg-FM-0X2"/>
                             <constraint firstItem="elN-en-KJs" firstAttribute="centerY" secondItem="7PK-8z-Udn" secondAttribute="centerY" constant="-35" id="XVs-Ol-7pL"/>
+                            <constraint firstItem="5xo-VD-pev" firstAttribute="centerX" secondItem="7PK-8z-Udn" secondAttribute="centerX" id="c3O-HU-SET"/>
                             <constraint firstItem="Ofz-NH-ilc" firstAttribute="top" secondItem="elN-en-KJs" secondAttribute="bottom" constant="46.5" id="jpl-Wi-79Z"/>
                             <constraint firstItem="ksU-IP-4p3" firstAttribute="top" secondItem="Ofz-NH-ilc" secondAttribute="bottom" constant="13" id="o7q-9e-yMe"/>
                             <constraint firstItem="Ofz-NH-ilc" firstAttribute="centerX" secondItem="7PK-8z-Udn" secondAttribute="centerX" id="t2e-pb-5y1"/>
@@ -75,7 +83,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="225" y="-502"/>
+            <point key="canvasLocation" x="361" y="27"/>
         </scene>
     </scenes>
 </document>

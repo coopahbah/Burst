@@ -3,6 +3,8 @@ import GameplayKit
 import Foundation
 import UIKit
 
+var gameVC: GameViewController?
+
 func randomDouble(upper: Double) -> Double {
     let magnitude = drand48() * upper
     let positiveInt = arc4random() % 2

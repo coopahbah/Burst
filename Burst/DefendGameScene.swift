@@ -2,6 +2,8 @@ import UIKit
 import SpriteKit
 
 class DefendGameScene: SKScene {
+    var gameVC: GameViewController?
+    let ud = UserDefaults.standard
     private var bubblesPopped: Int = 0
     
     private let screenSize: CGRect = UIScreen.main.bounds
@@ -17,6 +19,7 @@ class DefendGameScene: SKScene {
         minY = -1 * maxY
         
         bubblesPopped = 0
+        addPlayer()
     }
     
     func addPlayer() {
