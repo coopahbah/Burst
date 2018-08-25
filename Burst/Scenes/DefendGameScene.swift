@@ -18,11 +18,15 @@ class DefendGameScene: SKScene, SKPhysicsContactDelegate {
     private var bubbleAppear: TimeInterval = 1.0
     private var bubbleForce: Float = 8.0
     
+    private let bubbleRadius: Double = 40.0
+    private var hardMode: Bool = false
+    
     override func didMove(to view: SKView) {
         self.physicsWorld.contactDelegate = self
-        let zeroGravityVector = CGVector(dx: 0.0, dy: 0.0)
-        self.physicsWorld.gravity = zeroGravityVector
-        
+        self.physicsWorld.gravity = CGVector(dx: 0.0, dy: 0.0)
+        hardMode = ud.bool(forKey: "Hard Mode")
+        hardMode = true
+
         bubblesPopped = 0
         addPlayer()
         startPhase()
@@ -46,6 +50,7 @@ class DefendGameScene: SKScene, SKPhysicsContactDelegate {
     func addPlayer() {
         let playerSize = CGSize(width: 75, height: 75)
         let player = SKShapeNode(rectOf: playerSize, cornerRadius: 15.0)
+        player.name = "Player"
         player.position = CGPoint(x: 0.0, y: 0.0)
         player.fillColor = UIColor.darkGray
         player.strokeColor = UIColor.clear
@@ -63,8 +68,8 @@ class DefendGameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     @objc func addBubble() {
-        let bubble = DefendBubble(circleOfRadius: 40.0)
-        bubble.position = randomEdgePosition(width: maxX, height: maxY)
+        let bubble = DefendBubble(circleOfRadius: CGFloat(bubbleRadius))
+        bubble.position = randomEdgePosition(width: maxX - 40.0, height: maxY - 40.0)
         bubble.isUserInteractionEnabled = true
         bubble.fillColor = randomColor()
         bubble.strokeColor = UIColor.clear
@@ -85,18 +90,26 @@ class DefendGameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     override func update(_ currentTime: TimeInterval) {
-        /*
         for bubble in self.children {
-            if (bubble as? DefendBubble != nil) {
+            if (bubble.position.x.magnitude >= CGFloat(maxX - bubbleRadius) && bubble.physicsBody!.velocity.dx != 0.0) {
+                bubble.physicsBody!.velocity.dx *= -1.0
+            }
+            
+            if (bubble.position.y.magnitude >= CGFloat(maxY - bubbleRadius) && bubble.physicsBody!.velocity.dy != 0.0) {
+                bubble.physicsBody!.velocity.dy *= -1.0
+            }
+            
+            if (hardMode && bubble as? DefendBubble != nil) {
                 let bubblePosition = bubble.position
                 let direction = CGVector(dx: -1.0 * bubblePosition.x, dy: -1.0 * bubblePosition.y)
-                let newX = direction.dy * 0.035
-                let newY = -0.020 * direction.dx
+                
+                let newX = direction.dy * 0.1
+                let newY = direction.dx * -0.1
                 let newForce = CGVector(dx: newX, dy: newY)
+                
                 bubble.physicsBody!.applyForce(newForce)
             }
         }
- */
     }
     
     func setUpGravity(player: SKShapeNode) {

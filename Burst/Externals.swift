@@ -4,6 +4,7 @@ import Foundation
 import UIKit
 
 /*
+ -stop bubbles from colliding w each other
  -sounds
  -color themes
  -different game modes
