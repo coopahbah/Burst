@@ -1,20 +1,10 @@
 import UIKit
 import SpriteKit
 
-private var bubblesPopped: Int = 0
 let playerCategory:UInt32 = 0x1 << 0;
 let bubbleCategory:UInt32 = 0x1 << 1;
 
-class DefendGameScene: SKScene, SKPhysicsContactDelegate {
-    let ud = UserDefaults.standard
-    
-    private var maxX: Double = Double(UIScreen.main.bounds.width)
-    private var maxY: Double = Double(UIScreen.main.bounds.height)
-    
-    private var bubbleTimer: Timer! = Timer()
-    private var endPhaseTimer: Timer! = Timer()
-    private var downtimeTimer: Timer! = Timer()
-    
+class DefendGameScene: Game, SKPhysicsContactDelegate {
     private var bubbleAppear: TimeInterval = 1.0
     private var bubbleForce: Float = 8.0
     
@@ -67,7 +57,7 @@ class DefendGameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     @objc func addBubble() {
-        let bubble = DefendBubble(circleOfRadius: CGFloat(bubbleRadius))
+        let bubble = Bubble(circleOfRadius: CGFloat(bubbleRadius))
         bubble.position = randomEdgePosition(width: maxX - 40.0, height: maxY - 40.0)
         bubble.isUserInteractionEnabled = true
         bubble.fillColor = randomColor()
@@ -78,7 +68,7 @@ class DefendGameScene: SKScene, SKPhysicsContactDelegate {
         self.addChild(bubble)
     }
     
-    func setUpPhysics(bubble: DefendBubble) {
+    func setUpPhysics(bubble: Bubble) {
         bubble.physicsBody = SKPhysicsBody(circleOfRadius: 25.0)
         bubble.physicsBody!.isDynamic = true
         bubble.physicsBody!.categoryBitMask = bubbleCategory
@@ -98,7 +88,7 @@ class DefendGameScene: SKScene, SKPhysicsContactDelegate {
                 bubble.physicsBody!.velocity.dy *= -1.0
             }
             
-            if (hardMode && bubble as? DefendBubble != nil) {
+            if (hardMode && bubble as? Bubble != nil) {
                 let bubblePosition = bubble.position
                 let direction = CGVector(dx: -1.0 * bubblePosition.x, dy: -1.0 * bubblePosition.y)
                 
@@ -141,15 +131,4 @@ class DefendGameScene: SKScene, SKPhysicsContactDelegate {
     }
 }
 
-class DefendBubble : SKShapeNode {
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        let sound = SKAction.playSoundFileNamed("Pop.wav", waitForCompletion: false)
-        run(sound)
-        Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(removeBubble), userInfo: nil, repeats: false)
-    }
-    
-    @objc func removeBubble() {
-        self.removeFromParent()
-        bubblesPopped += 1
-    }
-}
+

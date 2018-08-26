@@ -5,28 +5,15 @@ import UIKit
 import AVKit
 import AudioToolbox
 
-private var bubblesPopped: Int = 0
 
-class GameScene: SKScene {
-    let ud = UserDefaults.standard
-    
-    private let screenSize: CGRect = UIScreen.main.bounds
-    private var maxX: Double = 0.0
-    private var maxY: Double = 0.0
+
+class GameScene: Game {
     private let maxScale: CGFloat = 75.0
-    
-    private var bubbleTimer: Timer! = Timer()
-    private var endTimer: Timer! = Timer()
-    private var endPhaseTimer: Timer! = Timer()
-    private var downtimeTimer: Timer! = Timer()
     
     private var bubbleAppear: TimeInterval = 1.0
     private var growDuration: TimeInterval = 6.0
     
     override func didMove(to view: SKView) {
-        maxX = Double(screenSize.width - 10.0)
-        maxY = Double(screenSize.height - 10.0)
-        
         bubblesPopped = 0
         startPhase()
     }
@@ -103,19 +90,6 @@ class GameScene: SKScene {
             ud.set(bubblesPopped, forKey: "High Score")
         }
         ud.set(bubblesPopped, forKey: "Score")
-    }
-    
-    class Bubble : SKShapeNode, AVAudioPlayerDelegate {
-        override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-            let sound = SKAction.playSoundFileNamed("Pop.wav", waitForCompletion: false)
-            run(sound)
-            Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(removeBubble), userInfo: nil, repeats: false)
-        }
-        
-        @objc func removeBubble() {
-            self.removeFromParent()
-            bubblesPopped += 1
-        }
     }
 }
 

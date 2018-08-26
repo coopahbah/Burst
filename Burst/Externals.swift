@@ -5,7 +5,6 @@ import UIKit
 import AVKit
 
 /*
- -popping sound
  -color themes
  -different game modes
     -classic
