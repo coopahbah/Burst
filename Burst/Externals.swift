@@ -7,15 +7,13 @@ import AVKit
 /*
  -color themes
  -different game modes
-    -classic
-        -Expert Mode: multiple bubbles spawn at once
-    -bubbles appear at edge and attack ship in center
-        -Expert Mode: bubbles move in circles with player as "planet"
-    -bubbles stay same size, ends when too many
+ -Classic expert mode
+ -bubbles stay same size, ends when too many
  -improve UI
  */
 
 var gameVC: GameViewController?
+var bubblesPopped: Int = 0
 
 func randomBool() -> Bool {
     let rand = arc4random() % 2

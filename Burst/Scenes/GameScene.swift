@@ -3,13 +3,10 @@ import SpriteKit
 import AVFoundation
 import AVKit
 
-var bubblesPopped: Int = 0
-
 class Game: SKScene {
     let ud = UserDefaults.standard
     var maxX: Double = Double(UIScreen.main.bounds.width)
     var maxY: Double = Double(UIScreen.main.bounds.height)
-    
     
     var bubbleTimer: Timer! = Timer()
     var endTimer: Timer! = Timer()

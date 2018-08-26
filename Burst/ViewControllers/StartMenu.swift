@@ -1,9 +1,7 @@
 import Foundation
 import UIKit
 
-class StartMenu : UIViewController {
-    let ud = UserDefaults.standard
-    
+class StartMenu : ViewController {
     @IBOutlet weak var RecentScore: UILabel!
     @IBOutlet weak var HighScore: UILabel!
     

@@ -7,17 +7,21 @@ import AudioToolbox
 
 class GameScene: Game {
     private let maxScale: CGFloat = 75.0
-    
     private var bubbleAppear: TimeInterval = 1.0
     private var growDuration: TimeInterval = 6.0
+    private var hardMode: Bool = false
+    private var numberOfBubbles: Int = 1
     
     override func didMove(to view: SKView) {
         bubblesPopped = 0
+        hardMode = ud.bool(forKey: "Hard Mode")
+        hardMode = true
         startPhase()
     }
     
     @objc func startPhase() {
-        bubbleTimer = Timer.scheduledTimer(timeInterval: bubbleAppear, target: self, selector: #selector(addBubble), userInfo: nil, repeats: true)
+        numberOfBubbles += 1
+        bubbleTimer = Timer.scheduledTimer(timeInterval: bubbleAppear, target: self, selector: #selector(addBubbles), userInfo: nil, repeats: true)
         endTimer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(checkForEnd), userInfo: nil, repeats: true)
         endPhaseTimer = Timer.scheduledTimer(timeInterval: 15.0, target: self, selector: #selector(endPhase), userInfo: nil, repeats: false)
         setPhase()
@@ -46,7 +50,7 @@ class GameScene: Game {
         }
     }
     
-    @objc func addBubble() {
+    func addBubble() {
         let xPosition = randomDouble(upper: maxX)
         let yPosition = randomDouble(upper: maxY)
         let bubble = Bubble(circleOfRadius: 10.0)
@@ -57,6 +61,16 @@ class GameScene: Game {
         bubble.alpha = 1.0
         self.addChild(bubble)
         growBubble(bubble: bubble)
+    }
+    
+    @objc func addBubbles() {
+        if (hardMode) {
+            for _ in 0..<numberOfBubbles {
+                addBubble()
+            }
+        } else {
+            addBubble()
+        }
     }
     
     func growBubble(bubble: Bubble) {
