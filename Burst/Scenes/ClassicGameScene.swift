@@ -5,8 +5,6 @@ import UIKit
 import AVKit
 import AudioToolbox
 
-
-
 class GameScene: Game {
     private let maxScale: CGFloat = 75.0
     
