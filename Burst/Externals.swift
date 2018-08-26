@@ -2,10 +2,10 @@ import SpriteKit
 import GameplayKit
 import Foundation
 import UIKit
+import AVKit
 
 /*
- -stop bubbles from colliding w each other
- -sounds
+ -popping sound
  -color themes
  -different game modes
     -classic

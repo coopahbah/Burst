@@ -20,6 +20,7 @@
 		CD4A7B81212DDEA900F9CE93 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD4A7B7F212DDEA900F9CE93 /* LaunchScreen.storyboard */; };
 		CD96D6F4212E0BA50048D296 /* StartMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD96D6F3212E0BA50048D296 /* StartMenu.swift */; };
 		CDF8534E213078DF0072B762 /* GameSelectMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF8534D213078DF0072B762 /* GameSelectMenu.swift */; };
+		CDF8535221323A070072B762 /* Pop.wav in Resources */ = {isa = PBXBuildFile; fileRef = CDF8535121323A070072B762 /* Pop.wav */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		CD4A7B82212DDEA900F9CE93 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CD96D6F3212E0BA50048D296 /* StartMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartMenu.swift; sourceTree = "<group>"; };
 		CDF8534D213078DF0072B762 /* GameSelectMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSelectMenu.swift; sourceTree = "<group>"; };
+		CDF8535121323A070072B762 /* Pop.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Pop.wav; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +83,7 @@
 				CD4A7B70212DDEA800F9CE93 /* AppDelegate.swift */,
 				CD4A7B7F212DDEA900F9CE93 /* LaunchScreen.storyboard */,
 				CD4A7B82212DDEA900F9CE93 /* Info.plist */,
+				CDF8535121323A070072B762 /* Pop.wav */,
 			);
 			path = Burst;
 			sourceTree = "<group>";
@@ -168,6 +171,7 @@
 				CD4A7B7E212DDEA900F9CE93 /* Assets.xcassets in Resources */,
 				CD4A7B81212DDEA900F9CE93 /* LaunchScreen.storyboard in Resources */,
 				CD3A21C7212E8096005E4EEB /* DefendGameScene.sks in Resources */,
+				CDF8535221323A070072B762 /* Pop.wav in Resources */,
 				CD4A7B75212DDEA800F9CE93 /* Actions.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

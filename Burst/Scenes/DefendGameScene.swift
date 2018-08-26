@@ -25,7 +25,6 @@ class DefendGameScene: SKScene, SKPhysicsContactDelegate {
         self.physicsWorld.contactDelegate = self
         self.physicsWorld.gravity = CGVector(dx: 0.0, dy: 0.0)
         hardMode = ud.bool(forKey: "Hard Mode")
-        hardMode = true
 
         bubblesPopped = 0
         addPlayer()
@@ -144,6 +143,12 @@ class DefendGameScene: SKScene, SKPhysicsContactDelegate {
 
 class DefendBubble : SKShapeNode {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        let sound = SKAction.playSoundFileNamed("Pop.wav", waitForCompletion: false)
+        run(sound)
+        Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(removeBubble), userInfo: nil, repeats: false)
+    }
+    
+    @objc func removeBubble() {
         self.removeFromParent()
         bubblesPopped += 1
     }

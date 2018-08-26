@@ -2,6 +2,8 @@ import SpriteKit
 import GameplayKit
 import Foundation
 import UIKit
+import AVKit
+import AudioToolbox
 
 private var bubblesPopped: Int = 0
 
@@ -102,13 +104,21 @@ class GameScene: SKScene {
         }
         ud.set(bubblesPopped, forKey: "Score")
     }
-}
-
-class Bubble : SKShapeNode {
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.removeFromParent()
-        bubblesPopped += 1
+    
+    class Bubble : SKShapeNode, AVAudioPlayerDelegate {
+        override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+            let sound = SKAction.playSoundFileNamed("Pop.wav", waitForCompletion: false)
+            run(sound)
+            Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(removeBubble), userInfo: nil, repeats: false)
+        }
+        
+        @objc func removeBubble() {
+            self.removeFromParent()
+            bubblesPopped += 1
+        }
     }
 }
+
+
 
 
