@@ -10,12 +10,11 @@ class GameScene: Game {
     private var bubbleAppear: TimeInterval = 1.0
     private var growDuration: TimeInterval = 6.0
     private var hardMode: Bool = false
-    private var numberOfBubbles: Int = 1
+    private var numberOfBubbles: Int = 0
     
     override func didMove(to view: SKView) {
         bubblesPopped = 0
         hardMode = ud.bool(forKey: "Hard Mode")
-        hardMode = true
         startPhase()
     }
     
@@ -41,7 +40,7 @@ class GameScene: Game {
         if (bubbleAppear > 0.1) {
             bubbleAppear -= 0.15
         } else {
-            bubbleAppear = bubbleAppear / 2
+            bubbleAppear = bubbleAppear * 0.75
         }
         if (growDuration > 2.0) {
             growDuration -= 0.5

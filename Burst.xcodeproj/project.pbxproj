@@ -20,6 +20,8 @@
 		CD4A7B81212DDEA900F9CE93 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD4A7B7F212DDEA900F9CE93 /* LaunchScreen.storyboard */; };
 		CD96D6F4212E0BA50048D296 /* StartMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD96D6F3212E0BA50048D296 /* StartMenu.swift */; };
 		CDC7426321326D4000092C17 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC7426221326D4000092C17 /* ViewController.swift */; };
+		CDE4BC0F2144A12F00062AE6 /* HeroGameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = CDE4BC0E2144A12F00062AE6 /* HeroGameScene.sks */; };
+		CDE4BC112144A14200062AE6 /* HeroGameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDE4BC102144A14200062AE6 /* HeroGameScene.swift */; };
 		CDF8534E213078DF0072B762 /* GameSelectMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF8534D213078DF0072B762 /* GameSelectMenu.swift */; };
 		CDF8535221323A070072B762 /* Pop.wav in Resources */ = {isa = PBXBuildFile; fileRef = CDF8535121323A070072B762 /* Pop.wav */; };
 		CDF85356213242AC0072B762 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF85355213242AC0072B762 /* GameScene.swift */; };
@@ -41,6 +43,8 @@
 		CD4A7B82212DDEA900F9CE93 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CD96D6F3212E0BA50048D296 /* StartMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartMenu.swift; sourceTree = "<group>"; };
 		CDC7426221326D4000092C17 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		CDE4BC0E2144A12F00062AE6 /* HeroGameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = HeroGameScene.sks; sourceTree = "<group>"; };
+		CDE4BC102144A14200062AE6 /* HeroGameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroGameScene.swift; sourceTree = "<group>"; };
 		CDF8534D213078DF0072B762 /* GameSelectMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSelectMenu.swift; sourceTree = "<group>"; };
 		CDF8535121323A070072B762 /* Pop.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Pop.wav; sourceTree = "<group>"; };
 		CDF85355213242AC0072B762 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
@@ -83,6 +87,7 @@
 				CD4A7B7D212DDEA900F9CE93 /* Assets.xcassets */,
 				CD4A7B72212DDEA800F9CE93 /* ClassicGameScene.sks */,
 				CD3A21C6212E8096005E4EEB /* DefendGameScene.sks */,
+				CDE4BC0E2144A12F00062AE6 /* HeroGameScene.sks */,
 				CD4A7B74212DDEA800F9CE93 /* Actions.sks */,
 				CD4A7B70212DDEA800F9CE93 /* AppDelegate.swift */,
 				CD4A7B7F212DDEA900F9CE93 /* LaunchScreen.storyboard */,
@@ -109,6 +114,7 @@
 				CDF85355213242AC0072B762 /* GameScene.swift */,
 				CD4A7B76212DDEA800F9CE93 /* ClassicGameScene.swift */,
 				CD3A21BE212E7E91005E4EEB /* DefendGameScene.swift */,
+				CDE4BC102144A14200062AE6 /* HeroGameScene.swift */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -178,6 +184,7 @@
 				CD4A7B81212DDEA900F9CE93 /* LaunchScreen.storyboard in Resources */,
 				CD3A21C7212E8096005E4EEB /* DefendGameScene.sks in Resources */,
 				CDF8535221323A070072B762 /* Pop.wav in Resources */,
+				CDE4BC0F2144A12F00062AE6 /* HeroGameScene.sks in Resources */,
 				CD4A7B75212DDEA800F9CE93 /* Actions.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -193,6 +200,7 @@
 				CD3A21BF212E7E91005E4EEB /* DefendGameScene.swift in Sources */,
 				CDF85356213242AC0072B762 /* GameScene.swift in Sources */,
 				CDC7426321326D4000092C17 /* ViewController.swift in Sources */,
+				CDE4BC112144A14200062AE6 /* HeroGameScene.swift in Sources */,
 				CD96D6F4212E0BA50048D296 /* StartMenu.swift in Sources */,
 				CD4A7B79212DDEA800F9CE93 /* GameViewController.swift in Sources */,
 				CD21F930212F5994002F8AC9 /* Externals.swift in Sources */,

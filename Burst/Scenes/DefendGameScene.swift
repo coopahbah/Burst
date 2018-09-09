@@ -15,7 +15,7 @@ class DefendGameScene: Game, SKPhysicsContactDelegate {
         self.physicsWorld.contactDelegate = self
         self.physicsWorld.gravity = CGVector(dx: 0.0, dy: 0.0)
         hardMode = ud.bool(forKey: "Hard Mode")
-
+        
         bubblesPopped = 0
         addPlayer()
         startPhase()
