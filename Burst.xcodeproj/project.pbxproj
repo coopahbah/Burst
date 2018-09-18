@@ -20,6 +20,7 @@
 		CD4A7B81212DDEA900F9CE93 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD4A7B7F212DDEA900F9CE93 /* LaunchScreen.storyboard */; };
 		CD96D6F4212E0BA50048D296 /* StartMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD96D6F3212E0BA50048D296 /* StartMenu.swift */; };
 		CDC7426321326D4000092C17 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC7426221326D4000092C17 /* ViewController.swift */; };
+		CDC9813C21458CC40012F064 /* Songs.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC9813B21458CC40012F064 /* Songs.swift */; };
 		CDE4BC0F2144A12F00062AE6 /* HeroGameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = CDE4BC0E2144A12F00062AE6 /* HeroGameScene.sks */; };
 		CDE4BC112144A14200062AE6 /* HeroGameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDE4BC102144A14200062AE6 /* HeroGameScene.swift */; };
 		CDF8534E213078DF0072B762 /* GameSelectMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF8534D213078DF0072B762 /* GameSelectMenu.swift */; };
@@ -43,6 +44,7 @@
 		CD4A7B82212DDEA900F9CE93 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CD96D6F3212E0BA50048D296 /* StartMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartMenu.swift; sourceTree = "<group>"; };
 		CDC7426221326D4000092C17 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		CDC9813B21458CC40012F064 /* Songs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Songs.swift; sourceTree = "<group>"; };
 		CDE4BC0E2144A12F00062AE6 /* HeroGameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = HeroGameScene.sks; sourceTree = "<group>"; };
 		CDE4BC102144A14200062AE6 /* HeroGameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroGameScene.swift; sourceTree = "<group>"; };
 		CDF8534D213078DF0072B762 /* GameSelectMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSelectMenu.swift; sourceTree = "<group>"; };
@@ -83,6 +85,7 @@
 				CD4A7B7A212DDEA800F9CE93 /* Main.storyboard */,
 				CDF8534F213079050072B762 /* ViewControllers */,
 				CDF85350213079180072B762 /* Scenes */,
+				CDC9813B21458CC40012F064 /* Songs.swift */,
 				CD21F92F212F5994002F8AC9 /* Externals.swift */,
 				CD4A7B7D212DDEA900F9CE93 /* Assets.xcassets */,
 				CD4A7B72212DDEA800F9CE93 /* ClassicGameScene.sks */,
@@ -206,6 +209,7 @@
 				CD21F930212F5994002F8AC9 /* Externals.swift in Sources */,
 				CD4A7B71212DDEA800F9CE93 /* AppDelegate.swift in Sources */,
 				CDF8534E213078DF0072B762 /* GameSelectMenu.swift in Sources */,
+				CDC9813C21458CC40012F064 /* Songs.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

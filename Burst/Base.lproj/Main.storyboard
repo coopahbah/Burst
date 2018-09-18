@@ -67,14 +67,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UVt-4s-omU">
-                                <rect key="frame" x="163" y="318.5" width="49" height="30"/>
+                                <rect key="frame" x="163" y="281" width="49" height="30"/>
                                 <state key="normal" title="Classic"/>
                                 <connections>
                                     <action selector="PlayClassic:" destination="N0x-Mf-ECu" eventType="touchUpInside" id="SiE-AS-uIX"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fqd-fn-zXV">
-                                <rect key="frame" x="159" y="356" width="57" height="30"/>
+                                <rect key="frame" x="159" y="318.5" width="57" height="30"/>
                                 <state key="normal" title="Defense"/>
                                 <connections>
                                     <action selector="PlayDefense:" destination="N0x-Mf-ECu" eventType="touchUpInside" id="ONY-Hh-2PD"/>
@@ -87,13 +87,22 @@
                                     <action selector="Back:" destination="N0x-Mf-ECu" eventType="touchUpInside" id="qN8-On-iZO"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tnW-gR-ZCK">
+                                <rect key="frame" x="170" y="356.5" width="34" height="30"/>
+                                <state key="normal" title="Hero"/>
+                                <connections>
+                                    <action selector="PlayHero:" destination="N0x-Mf-ECu" eventType="touchUpInside" id="y5k-ng-hMA"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="fqd-fn-zXV" firstAttribute="top" secondItem="UVt-4s-omU" secondAttribute="bottom" constant="7.5" id="1Ks-69-DU6"/>
+                            <constraint firstItem="fqd-fn-zXV" firstAttribute="top" secondItem="UVt-4s-omU" secondAttribute="bottom" constant="8" id="1Ks-69-DU6"/>
+                            <constraint firstItem="tnW-gR-ZCK" firstAttribute="centerX" secondItem="K9T-ML-2DG" secondAttribute="centerX" id="8e0-0A-mZT"/>
+                            <constraint firstItem="tnW-gR-ZCK" firstAttribute="top" secondItem="fqd-fn-zXV" secondAttribute="bottom" constant="8" id="8r1-iL-nZt"/>
                             <constraint firstItem="CgK-R3-85p" firstAttribute="centerX" secondItem="K9T-ML-2DG" secondAttribute="centerX" id="A4g-Vi-Edd"/>
                             <constraint firstItem="fqd-fn-zXV" firstAttribute="centerX" secondItem="K9T-ML-2DG" secondAttribute="centerX" id="JSc-bT-gHs"/>
-                            <constraint firstItem="UVt-4s-omU" firstAttribute="centerY" secondItem="K9T-ML-2DG" secondAttribute="centerY" id="Vmf-fX-56L"/>
+                            <constraint firstItem="fqd-fn-zXV" firstAttribute="centerY" secondItem="K9T-ML-2DG" secondAttribute="centerY" id="RRd-2Q-2ad"/>
                             <constraint firstItem="lJ3-Um-Ep6" firstAttribute="bottom" secondItem="CgK-R3-85p" secondAttribute="bottom" constant="20" id="XmA-vn-fFi"/>
                             <constraint firstItem="UVt-4s-omU" firstAttribute="centerX" secondItem="K9T-ML-2DG" secondAttribute="centerX" id="rDG-Dz-e5N"/>
                         </constraints>

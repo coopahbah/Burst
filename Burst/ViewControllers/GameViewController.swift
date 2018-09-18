@@ -20,6 +20,8 @@ class GameViewController: ViewController {
         switch chosenGame {
         case "Defense":
             return SKScene(fileNamed: "DefendGameScene")!
+        case "Hero":
+            return SKScene(fileNamed: "HeroGameScene")!
         default:
             return SKScene(fileNamed: "ClassicGameScene")!
         }
