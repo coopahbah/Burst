@@ -16,16 +16,12 @@ var gameVC: GameViewController?
 var bubblesPopped: Int = 0
 
 func randomBool() -> Bool {
-    let rand = arc4random() % 2
-    return rand == 1
+    return Bool.random()
 }
 
 func randomDouble(upper: Double) -> Double {
-    let magnitude = drand48() * upper
-    if (!randomBool()) {
-        return -1 * magnitude
-    }
-    return magnitude
+    let numrange = Range(uncheckedBounds: (-1.0 * upper, upper))
+    return Double.random(in: numrange)
 }
 
 func randomColor() -> UIColor! {

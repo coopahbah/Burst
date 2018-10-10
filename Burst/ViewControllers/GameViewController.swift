@@ -19,11 +19,11 @@ class GameViewController: ViewController {
         let chosenGame = UserDefaults.standard.string(forKey: "Game")
         switch chosenGame {
         case "Defense":
-            return SKScene(fileNamed: "DefendGameScene")!
+            return GameScene(fileNamed: "DefendGameScene")!
         case "Hero":
-            return SKScene(fileNamed: "HeroGameScene")!
+            return GameScene(fileNamed: "HeroGameScene")!
         default:
-            return SKScene(fileNamed: "ClassicGameScene")!
+            return GameScene(fileNamed: "ClassicGameScene")!
         }
     }
 }
